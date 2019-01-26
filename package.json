@@ -1,0 +1,33 @@
+{
+  "name": "node-red-contrib-detect-chinese",
+  "version": "1.0.0",
+  "description": "A simple node that detects whether message payload contains chinese characters",
+  "main": "lib/detect-chinese.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "is-chinese": "^1.2.5",
+    "contains-chinese": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simiroll/node-red-contrib-detect-chinese.git"
+  },
+  "bugs": {
+    "url": "https://github.com/simiroll/node-red-contrib-detect-chinese/issues"
+  },
+  "keywords": [
+    "node-red",
+    "chinese",
+    "detect-language",
+    "language"
+  ],
+  "author": "simiroll",
+  "license": "MIT",
+  "node-red" : {
+    "nodes": {
+      "detect-chinese": "lib/detect-chinese.js"
+    }
+  }
+}
