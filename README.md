@@ -4,7 +4,7 @@ node-red-contrib-detect-chinese is a simple node that detects whether message pa
 
 ## Installation
 
-    `npm install node-red-contrib-detect-chinese`
+    npm install node-red-contrib-detect-chinese
 
 ## Usage
 
