@@ -1,36 +1,77 @@
-<script type="text/javascript">
-    RED.nodes.registerType('detect-chinese',{
-        category: 'analysis',
-        color: '#e5def7',
-        defaults: {
-            name: {value:"detect"}
-        },
-        inputs:1,
-        outputs:1,
-        icon: "detect-zh.png",
-        label: function() {
-            return this.name||"detect";
-        }
-    });
-</script>
-
 <script type="text/x-red" data-template-name="detect-chinese">
+    <!-- TOPIC -->
+    <div class="form-row">
+        <label for="node-input-topic"><i class="fa fa-tasks"></i>Topic</label>
+        <input type="text" id="node-input-topic" placeholder="Topic"/>
+    </div>
+	<!-- NAME -->
     <div class="form-row">
         <label for="node-input-name"><i class="icon-tag"></i>Name</label>
-        <input type="text" id="node-input-name" placeholder="Name">
+        <input type="text" id="node-input-name" placeholder="Name"/>
+    </div>
+	<!-- INPUT -->
+	<div class="form-row">
+        <label for="node-input-input"><i class="fa fa-arrow-left"></i>Input from</label>
+        <input type="text" id="node-input-input" style="width: 70%;" placeholder="payload"/>
+        <input type="hidden" id="node-input-inputType"/>
+    </div>
+	<!-- OUTPUT -->
+    <div class="form-row">
+        <label for="node-input-output"><i class="fa fa-arrow-right"></i>Output to</label>
+        <input type="text" id="node-input-output" style="width: 70%;" placeholder="payload"/>
+        <input type="hidden" id="node-input-outputType"/>
     </div>
 </script>
 
 <script type="text/x-red" data-help-name="detect-chinese">
-    <p>Detects whether <code>payload</code> contains chinese characters</p>
+    <p>Detects whether input contains chinese characters</p>
 	<h3>Output</h3>
 	<dl class="message-properties">
-		<dt>chinese<span class="property-type">string</span></dt>
-		<dd>has 3 possibilities:</dd>
+		<dt>detect<span class="property-type">string</span></dt>
+		<dd>returns 3 possibilities:</dd>
 		<ul>
 		<li><code>entire</code></li>
 		<li><code>partial</code></li>
 		<li><code>none</code></li>
 		</ul>
 	</dl>
+</script>
+
+<script type="text/javascript">
+    RED.nodes.registerType('detect-chinese',{
+        category: 'analysis',
+        color: '#e5def7',
+        defaults: {
+            name: {value:''},
+			topic: {value:''},
+			input: {value:'payload'},
+			inputType: {value:'msg'},
+			output: {value:'detect'},
+			outputType: {value:'msg'}
+        },
+        inputs:1,
+        outputs:1,
+        icon: "white-globe.png",
+        label: function() {
+            return this.name||this.topic||"detect";
+        },
+		oneditprepare: function() {
+			if (!this.inputType) {
+			  this.inputType = 'msg';
+			}
+			$('#node-input-input').typedInput({
+			  default: 'msg',
+			  types: ['msg','flow','global','env'],
+			  typeField: $('#node-input-inputType')
+			});
+			if (!this.outputType) {
+			  this.outputType = 'msg';
+			}
+			$('#node-input-output').typedInput({
+			  default: 'msg',
+			  types: ['msg','flow','global'],
+			  typeField: $('#node-input-outputType')
+			});
+		}
+    });
 </script>

@@ -1,6 +1,6 @@
 {
   "name": "node-red-contrib-detect-chinese",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple node that detects whether message payload contains chinese characters",
   "main": "lib/detect-chinese.js",
   "scripts": {
@@ -20,7 +20,7 @@
   "keywords": [
     "node-red",
     "chinese",
-    "detect-language",
+    "detect language",
     "language"
   ],
   "author": "simiroll",

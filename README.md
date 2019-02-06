@@ -14,7 +14,7 @@ simply passes `payload` as input
 
 ### Output
 
-returns `chinese`, which has 3 possibilities: `entire`, `partial`, `none`
+returns `detect`, which has 3 possibilities: `entire`, `partial`, `none`
 
 ## License
 
